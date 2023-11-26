@@ -1,9 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import LoginScreen from "../ui/LoginScreen";
-import RegisterScreen from "../ui/RegisterScreen";
+import { LoginScreen, RegisterScreen } from "../ui";
 
 export type AuthStackParamsList = {};
 
@@ -23,5 +21,3 @@ const AuthStack = () => {
 };
 
 export default AuthStack;
-
-const styles = StyleSheet.create({});
