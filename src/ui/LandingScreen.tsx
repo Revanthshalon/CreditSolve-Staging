@@ -26,7 +26,7 @@ const LandingScreen = () => {
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <Image
         style={styles.introImage}
-        source={require("../../assets/landingpage.png")}
+        source={require("../../assets/landingpage-min.png")}
       />
       <Text style={styles.title}>Stay on top of your finance with us</Text>
       <Text style={styles.subtitle}>
