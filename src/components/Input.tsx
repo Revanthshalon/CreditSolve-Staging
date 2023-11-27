@@ -10,16 +10,17 @@ import {
 } from "react-native";
 import React, { Dispatch, SetStateAction } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { emailValidator, passwordValidator } from "../lib/utils";
 
 type Props = {
   placeholder: string;
   value: string;
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange?: Dispatch<SetStateAction<string>>;
   style?: ViewStyle;
   textStyle?: TextStyle;
   type?: "email" | "text" | "password";
   iconOnPress?: () => void;
-  onValidation: Dispatch<SetStateAction<boolean>>;
+  onValidation?: Dispatch<SetStateAction<boolean>>;
 };
 
 const Input = ({
@@ -38,32 +39,24 @@ const Input = ({
     setSecurePassword((prevState) => !prevState);
   };
 
-  const emailValidator = (email: string) => {
-    const regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regex.test(email);
-  };
-
-  const passwordValidator = (password: string) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!-%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    return regex.test(password);
-  };
-
   const validate = (value: string) => {
     switch (type) {
       case "email":
         console.log(value);
         setValidationState(() => emailValidator(value));
         console.log(validationState);
-        onValidation(() => validationState);
+        if (onValidation != undefined) {
+          onValidation(() => validationState);
+        }
         break;
       case "password":
         console.log(value);
         console.log(passwordValidator(value));
         setValidationState(() => passwordValidator(value));
         console.log(validationState);
-        onValidation(() => validationState);
+        if (onValidation != undefined) {
+          onValidation(() => validationState);
+        }
         break;
     }
   };
@@ -90,7 +83,9 @@ const Input = ({
         placeholder={placeholder}
         value={value}
         onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-          onChange(e.nativeEvent.text);
+          if (onChange != undefined) {
+            onChange(e.nativeEvent.text);
+          }
           validate(e.nativeEvent.text);
         }}
         secureTextEntry={type == "password" && securePassword}

@@ -40,14 +40,9 @@ const RegisterScreen = () => {
       confirmPasswordValidator &&
       password === confirmPassword
     ) {
-      console.log(true);
-      console.log(email, password, confirmPassword);
+      console.log("Password Validation Success. Reroute to Home page");
     } else {
-      console.log("-----------");
-      console.log(emailValidator);
-      console.log(passwordValidator);
-      console.log(confirmPasswordValidator);
-      console.log(false);
+      console.log("Password Validation Error");
     }
   };
   const signinHandler = () => {

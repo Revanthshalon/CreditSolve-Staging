@@ -16,9 +16,10 @@ import { AuthStackParamsList } from "../routes/AuthStack";
 import Input from "../components/Input";
 import Button from "../components/Button";
 
-type Props = {};
+const LoginScreen = () => {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-const LoginScreen = (props: Props) => {
   // Navigation
   const nav = useNavigation<NavigationProp<AuthStackParamsList, "Login">>();
 
@@ -34,14 +35,8 @@ const LoginScreen = (props: Props) => {
         <View>
           <Text style={styles.header}>Login</Text>
           <View style={styles.formContainer}>
-            <Input placeholder="Email" />
-            <Input
-              placeholder="Password"
-              type="password"
-              iconOnPress={() => {
-                console.log("test");
-              }}
-            />
+            <Input placeholder="Email" value={email} />
+            <Input placeholder="Password" type="password" value={password} />
           </View>
           <Button
             label="Login"
