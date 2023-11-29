@@ -12,9 +12,9 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { AuthStackParamsList } from "../routes/AuthStack";
-import Input from "../components/Input";
-import Button from "../components/Button";
+import { AuthStackParamsList } from "../../routes/AuthStack";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 const LoginScreen = () => {
   const [email, setEmail] = React.useState("");

@@ -1,13 +1,13 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import {
   NavigationProp,
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import { AuthStackParamsList } from "../routes/AuthStack";
+import { AuthStackParamsList } from "../../routes/AuthStack";
 
 const LandingScreen = () => {
   const nav = useNavigation<NavigationProp<AuthStackParamsList, "Landing">>();

@@ -9,14 +9,14 @@ import {
 } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 import {
   NavigationProp,
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import { AuthStackParamsList } from "../routes/AuthStack";
+import { AuthStackParamsList } from "../../routes/AuthStack";
 
 const RegisterScreen = () => {
   // State Variables
