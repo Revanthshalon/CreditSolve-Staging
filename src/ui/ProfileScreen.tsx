@@ -3,14 +3,14 @@ import React from "react";
 
 type Props = {};
 
-const RootStack = (props: Props) => {
+const ProfileScreen = (props: Props) => {
   return (
     <View>
-      <Text>RootStack</Text>
+      <Text>ProfileScreen</Text>
     </View>
   );
 };
 
-export default RootStack;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({});
