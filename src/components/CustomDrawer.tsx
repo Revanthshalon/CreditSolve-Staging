@@ -10,6 +10,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
+import Profile from "./Profile";
 
 type Props = {
   state: DrawerNavigationState<ParamListBase>;
@@ -21,7 +22,7 @@ const CustomDrawer = (props: Props) => {
   return (
     <DrawerContentScrollView {...props}>
       <View style={{ padding: 20 }}>
-        <Text>Custom Drawer</Text>
+        <Profile />
       </View>
       <DrawerItemList {...props} />
       <DrawerItem
