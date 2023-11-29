@@ -42,18 +42,13 @@ const Input = ({
   const validate = (value: string) => {
     switch (type) {
       case "email":
-        console.log(value);
         setValidationState(() => emailValidator(value));
-        console.log(validationState);
         if (onValidation != undefined) {
           onValidation(() => validationState);
         }
         break;
       case "password":
-        console.log(value);
-        console.log(passwordValidator(value));
         setValidationState(() => passwordValidator(value));
-        console.log(validationState);
         if (onValidation != undefined) {
           onValidation(() => validationState);
         }
