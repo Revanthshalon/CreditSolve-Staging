@@ -6,14 +6,23 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import {
+  NavigationProp,
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { RootStackParamList } from "../routes/RootStack";
 
 type Props = {};
 
 const Profile = (props: Props) => {
+  // Get Navigation from UseNavigation hook
+  const nav = useNavigation<NavigationProp<RootStackParamList, "Profile">>();
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        console.log("navigate to profile page");
+        nav.dispatch(StackActions.push("Profile"));
       }}
     >
       <View style={styles.container}>
@@ -22,7 +31,7 @@ const Profile = (props: Props) => {
           style={styles.profilePicture}
         />
         <View style={styles.profileDetailsContainer}>
-          <Text style={{ color: "#fff", fontSize: 22 }}>User Name</Text>
+          <Text style={styles.profileLabel}>User Name</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -47,5 +56,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
     marginLeft: 10,
+  },
+  profileLabel: {
+    color: "#fff",
+    fontSize: 22,
+    fontWeight: "bold",
   },
 });

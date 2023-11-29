@@ -13,4 +13,8 @@ export { default as PaymentListScreen } from "./paymentScreens/PaymentListScreen
 // Purchase Screens
 export { default as PurchaseListScreen } from "./purchaseScreens/PurchaseListScreen";
 
-export { default as ProfileScreen } from "./ProfileScreen";
+// Profile Screens
+export { default as ProfileScreen } from "./profileScreens/ProfileScreen";
+
+// Settings Screens
+export { default as SettingsScreen } from "./settingsScreens/SettingsScreen";

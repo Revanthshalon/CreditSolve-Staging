@@ -1,13 +1,12 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { ProfileScreen } from "../ui";
+import { SettingsScreen } from "../ui";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import JournalNavigator from "./JournalNavigator";
 import CustomeDrawer from "../components/CustomDrawer";
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
-  ProfileScreen: undefined;
+  SettingsScreen: undefined;
 };
 
 const HomeStack = () => {
@@ -36,9 +35,9 @@ const HomeStack = () => {
         component={JournalNavigator}
       />
       <Drawer.Screen
-        name="ProfileScreen"
-        options={{ drawerLabel: "Profile" }}
-        component={ProfileScreen}
+        name="SettingsScreen"
+        options={{ drawerLabel: "Settings" }}
+        component={SettingsScreen}
       />
     </Drawer.Navigator>
   );
