@@ -26,36 +26,50 @@ const LoginScreen = () => {
   const insets = useSafeAreaInsets();
 
   const createAccountHandler = () => {
-    nav.dispatch(StackActions.replace("Register"));
+    nav.dispatch(StackActions.push("Register"));
   };
+
+  const forgotPasswordHandler = () => {};
+
   const signinHandler = () => {};
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <TouchableWithoutFeedback style={{ flex: 1 }} onPress={Keyboard.dismiss}>
-        <View>
-          <Text style={styles.header}>Login</Text>
-          <View style={styles.formContainer}>
-            <Input placeholder="Email" value={email} />
-            <Input placeholder="Password" type="password" value={password} />
+        <View style={styles.loginWrapper}>
+          <View>
+            <Text style={styles.header}>Login</Text>
+            <View style={styles.formContainer}>
+              <Input placeholder="Email" value={email} />
+              <Input placeholder="Password" type="password" value={password} />
+            </View>
+            <Button
+              label="Login"
+              onPress={signinHandler}
+              style={styles.button}
+              textStyle={styles.buttonLabel}
+              activeOpacity={0.5}
+              variant="filled"
+              variantColor="#39b54a"
+            />
+            <Button
+              label="Forgot Password?"
+              onPress={forgotPasswordHandler}
+              variant="text"
+              variantColor="#39b54a"
+              textStyle={{ textAlign: "center" }}
+              activeOpacity={0.5}
+            />
           </View>
-          <Button
-            label="Login"
-            onPress={signinHandler}
-            style={styles.button}
-            textStyle={styles.buttonLabel}
-            activeOpacity={0.5}
-            variant="filled"
-            variantColor="#39b54a"
-          />
-
-          <Button
-            label="Don't have an account? Sign-up"
-            onPress={createAccountHandler}
-            variant="text"
-            variantColor="#39b54a"
-            textStyle={{ textAlign: "center" }}
-            activeOpacity={0.5}
-          />
+          <View style={styles.footer}>
+            <Button
+              label="Don't have an account? Sign-up"
+              onPress={createAccountHandler}
+              variant="text"
+              variantColor="#39b54a"
+              textStyle={{ textAlign: "center" }}
+              activeOpacity={0.5}
+            />
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </View>
@@ -91,5 +105,16 @@ const styles = StyleSheet.create({
   buttonLabel: {
     fontSize: 20,
     textAlign: "center",
+  },
+  loginWrapper: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  footer: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    flexDirection: "row",
   },
 });

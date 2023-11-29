@@ -46,7 +46,7 @@ const RegisterScreen = () => {
     }
   };
   const signinHandler = () => {
-    nav.dispatch(StackActions.replace("Login"));
+    nav.dispatch(StackActions.push("Login"));
   };
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
