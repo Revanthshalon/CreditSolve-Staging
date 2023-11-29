@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { CompanyListScreen } from "../ui/companyScreens";
-import { PaymentListScreen } from "../ui/paymentScreens";
-import { PurchaseListScreen } from "../ui/purchaseScreens";
+import {
+  ComapanyListScreen,
+  PurchaseListScreen,
+  PaymentListScreen,
+} from "../ui";
 
 export type JournalStackParamList = {
   CompanyListScreen: undefined;
@@ -17,7 +18,7 @@ const JournalNavigator = () => {
     <BottomTab.Navigator screenOptions={{ headerShown: false }}>
       <BottomTab.Screen
         name="CompanyListScreen"
-        component={CompanyListScreen}
+        component={ComapanyListScreen}
         options={{ tabBarLabel: "Company" }}
       />
       <BottomTab.Screen
