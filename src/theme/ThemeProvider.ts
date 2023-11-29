@@ -9,7 +9,7 @@
 //   const [currentTheme, setCurrentTheme] = React.useState("dark");
 
 //   const toggleTheme = () => {
-//     setCurrentTheme((prevTheme) => (prevTheme == "dark" ? "light" : "dark"));
+//     setCurrentTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
 //   };
 
 //   return (

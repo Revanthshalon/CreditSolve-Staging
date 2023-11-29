@@ -14,18 +14,21 @@ export type JournalStackParamList = {
 const JournalNavigator = () => {
   const BottomTab = createBottomTabNavigator<JournalStackParamList>();
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator screenOptions={{ headerShown: false }}>
       <BottomTab.Screen
         name="CompanyListScreen"
         component={CompanyListScreen}
+        options={{ tabBarLabel: "Company" }}
       />
       <BottomTab.Screen
         name="PurchaseListScreen"
         component={PurchaseListScreen}
+        options={{ tabBarLabel: "Purchase" }}
       />
       <BottomTab.Screen
         name="PaymentListScreen"
         component={PaymentListScreen}
+        options={{ tabBarLabel: "Payment" }}
       />
     </BottomTab.Navigator>
   );
