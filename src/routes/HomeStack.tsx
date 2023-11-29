@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, ProfileScreen } from "../ui";
+import { ProfileScreen } from "../ui";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import JournalNavigator from "./JournalNavigator";
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
@@ -10,16 +10,16 @@ export type HomeStackParamList = {
 };
 
 const HomeStack = () => {
-  const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+  const Drawer = createDrawerNavigator<HomeStackParamList>();
   return (
     <NavigationContainer>
-      <HomeStack.Navigator
+      <Drawer.Navigator
         initialRouteName="HomeScreen"
         screenOptions={{ headerShown: false }}
       >
-        <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
-        <HomeStack.Screen name="ProfileScreen" component={ProfileScreen} />
-      </HomeStack.Navigator>
+        <Drawer.Screen name="HomeScreen" component={JournalNavigator} />
+        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };

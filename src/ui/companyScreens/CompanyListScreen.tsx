@@ -3,14 +3,14 @@ import React from "react";
 
 type Props = {};
 
-const Drawer = (props: Props) => {
+const CompanyListScreen = (props: Props) => {
   return (
     <View>
-      <Text>Drawer</Text>
+      <Text>CompanyListScreen</Text>
     </View>
   );
 };
 
-export default Drawer;
+export default CompanyListScreen;
 
 const styles = StyleSheet.create({});
