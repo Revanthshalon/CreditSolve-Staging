@@ -6,6 +6,7 @@ export { default as ForgotPasswordScreen } from "./authScreens/ForgotPasswordScr
 
 // Company Screens
 export { default as ComapanyListScreen } from "./companyScreens/CompanyListScreen";
+export { default as CompanyDetailsScreen } from "./companyScreens/CompanyDetailsScreen";
 
 // Payment Screens
 export { default as PaymentListScreen } from "./paymentScreens/PaymentListScreen";
