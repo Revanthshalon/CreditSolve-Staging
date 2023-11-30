@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CompanyItem, SearchBar, FloatingButton } from "../../components";
 import CompanyForm from "./CompanyForm";
 import Icons from "@expo/vector-icons/Ionicons";
+import { StackActions, useNavigation } from "@react-navigation/native";
 
 const CompanyListScreen = () => {
   const [companies, setCompanies] = React.useState(companyList);
@@ -14,6 +15,8 @@ const CompanyListScreen = () => {
   const filteredCompaniesByName = companies.filter((company) =>
     company.name.toLowerCase().includes(searchText.toLowerCase())
   );
+
+  const nav = useNavigation();
 
   return (
     <SafeAreaView style={styles.containerWrapper}>
@@ -30,7 +33,17 @@ const CompanyListScreen = () => {
               data={filteredCompaniesByName}
               keyExtractor={(item) => item._id}
               renderItem={({ index, item }) => (
-                <CompanyItem index={index} item={item} />
+                <CompanyItem
+                  index={index}
+                  item={item}
+                  onPress={() => {
+                    nav.dispatch(
+                      StackActions.push("CompanyDetails", {
+                        companyId: item._id,
+                      })
+                    );
+                  }}
+                />
               )}
               showsVerticalScrollIndicator={false}
             />

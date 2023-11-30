@@ -11,11 +11,16 @@ type Props = {
   onPress: () => void;
   Icon: React.ReactNode;
   style: ViewStyle;
+  activeOpacity?: number;
 };
 
 const FloatingButton = (props: Props) => {
   return (
-    <TouchableOpacity onPress={props.onPress} style={props.style}>
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={props.style}
+      activeOpacity={props.activeOpacity || 0.7}
+    >
       {props.Icon}
     </TouchableOpacity>
   );

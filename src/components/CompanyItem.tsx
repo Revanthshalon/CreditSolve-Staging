@@ -13,9 +13,10 @@ import Icons from "@expo/vector-icons/Ionicons";
 type Props = {
   index: number;
   item: Company;
+  onPress?: () => void;
 };
 
-const CompanyItem = ({ index, item }: Props) => {
+const CompanyItem = ({ index, item, onPress }: Props) => {
   // Handler Functions
   const editHandler = () => {
     console.log("Edit Handler");
@@ -31,7 +32,7 @@ const CompanyItem = ({ index, item }: Props) => {
 
   return (
     <Animated.View entering={FadeInDown.delay(200 * index)}>
-      <TouchableOpacity style={styles.rowContainer}>
+      <TouchableOpacity style={styles.rowContainer} onPress={onPress}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerLabel}>{item.name}</Text>
           <Text style={styles.bodyLabel}>
