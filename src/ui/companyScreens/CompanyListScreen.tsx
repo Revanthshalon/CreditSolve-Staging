@@ -2,27 +2,34 @@ import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import companyList from "../../data/seed";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { CompanyItem, SearchBar } from "../../components";
 
 const CompanyListScreen = () => {
   const [companies, setCompanies] = React.useState(companyList);
+  const [searchText, setSearchText] = React.useState("");
+
+  const filteredCompaniesByName = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#212529" }}>
+    <SafeAreaView style={styles.containerWrapper}>
       <View style={styles.container}>
         <View>
-          {/* TODO: Add A Search Bar Component Here */}
-          <Text>Search Bar</Text>
+          <SearchBar value={searchText} onChangeText={setSearchText} />
         </View>
         <View style={styles.listContainer}>
-          {/* TODO: Add a List Rendering Component Here */}
-          {!companyList && (
+          {!filteredCompaniesByName && (
             <Text style={styles.label}>No Companies Added Yet</Text>
           )}
-          {companyList && (
+          {filteredCompaniesByName && (
             <FlatList
-              data={companyList}
+              data={filteredCompaniesByName}
               keyExtractor={(item) => item._id}
-              renderItem={({ item }) => <Text>{item.name}</Text>}
+              renderItem={({ index, item }) => (
+                <CompanyItem index={index} item={item} />
+              )}
+              showsVerticalScrollIndicator={false}
             />
           )}
         </View>
@@ -42,14 +49,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#212529",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   label: {
     color: "#f8f9fa",
   },
   listContainer: {
-    flex: 1,
     backgroundColor: "#212529",
+    maxHeight: 620,
+    width: "92%",
   },
 });
