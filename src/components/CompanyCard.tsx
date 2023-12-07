@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Linking,
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Icons from "@expo/vector-icons/Ionicons";
 import Button from "./Button";
 import { RouteProp, useRoute } from "@react-navigation/native";
@@ -11,8 +18,34 @@ type Props = {};
 const CompanyCard = (props: Props) => {
   const route = useRoute<RouteProp<RootStackParamList, "CompanyDetails">>();
 
+  // State Variables
+  const [callButtonState, setCallButtonState] = React.useState(false);
+  const [messageButtonState, setMessageButtonState] = React.useState(false);
+
   // Get Company Details from Company Id
   const company = companyList.find((c) => c._id === route.params.companyId);
+
+  // Focus Handlers
+  const callButtonStateHandler = () => {
+    setCallButtonState((prevState) => !prevState);
+  };
+
+  const messageButtonStateHandler = () => {
+    setMessageButtonState((prevState) => !prevState);
+  };
+
+  // Action Handlers
+  const editHandler = () => {
+    console.log("Edit Company");
+  };
+
+  const callHandler = () => {
+    Linking.openURL(`tel:${company?.contact}`);
+  };
+
+  const messageHandler = () => {
+    Linking.openURL(`whatsapp://send?text=Hi&phone=${company?.contact}`);
+  };
 
   return (
     <View style={styles.container}>
@@ -27,7 +60,7 @@ const CompanyCard = (props: Props) => {
       <View style={styles.buttonContainer}>
         <View style={styles.updateContainer}>
           <Button
-            onPress={() => {}}
+            onPress={editHandler}
             label="Edit"
             variant="text"
             variantColor="#39b54a"
@@ -36,18 +69,32 @@ const CompanyCard = (props: Props) => {
           />
         </View>
         <View style={styles.actionsContainer}>
-          <Icons
-            style={styles.icon}
-            name="call-outline"
-            size={20}
-            color="#39b54a"
-          />
-          <Icons
-            style={styles.icon}
-            name="chatbox-outline"
-            size={20}
-            color="#39b54a"
-          />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={callHandler}
+            onPressIn={callButtonStateHandler}
+            onPressOut={callButtonStateHandler}
+          >
+            <Icons
+              style={styles.icon}
+              name={callButtonState ? "call" : "call-outline"}
+              size={20}
+              color="#39b54a"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={messageHandler}
+            onPressIn={messageButtonStateHandler}
+            onPressOut={messageButtonStateHandler}
+          >
+            <Icons
+              style={styles.icon}
+              name={messageButtonState ? "chatbubbles" : "chatbubbles-outline"}
+              size={20}
+              color="#39b54a"
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

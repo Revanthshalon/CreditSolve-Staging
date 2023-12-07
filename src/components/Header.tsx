@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   containerWrapper: {
     flexDirection: "row",
     paddingTop: 20,
+    paddingBottom: 10,
   },
   leftContainer: {
     justifyContent: "center",

@@ -9,3 +9,4 @@ export { default as SearchBar } from "./SearchBar";
 export { default as FloatingButton } from "./FloatingButton";
 export { default as Header } from "./Header";
 export { default as CompanyCard } from "./CompanyCard";
+export { default as ItemList } from "./ItemList";
